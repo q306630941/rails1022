@@ -1,6 +1,17 @@
 class PostsController < ApplicationController
 
   before_action :authenticate_user!, :only => [:new, :create]
+  def index
+    @posts = Post.all
+  end
+
+  def show
+    @post = Post.find(params[:id])
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+  end
 
   def new
     @group = Group.find(params[:group_id])
